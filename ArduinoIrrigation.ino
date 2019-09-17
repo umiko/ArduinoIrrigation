@@ -1,3 +1,10 @@
+//AUTHOR:
+//umiko(https://github.com/umiko)
+//Permission to copy and modify is granted under the MIT license
+//
+//DESCRIPTION:
+//Main file for the irrigation System
+
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
@@ -5,7 +12,7 @@
 #include <pump.hpp>
 #include <flowrate.hpp>
 
-#include "arduino_secrets.h" //this includes defintions of the WiFi SSID and password and has to be done by the user
+#include "arduino_secrets.h" //this includes defintions of the WiFi SSID and password and the POST secrets. All that has to be done by the user
 #include "wifi.hpp"
 
 wifi wireless;

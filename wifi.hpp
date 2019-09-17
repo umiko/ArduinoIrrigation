@@ -1,3 +1,10 @@
+//AUTHOR:
+//umiko(https://github.com/umiko)
+//Permission to copy and modify is granted under the MIT license
+//
+//DESCRIPTION:
+//Declaration of the WiFi-Wrapper
+
 #include <Arduino.h>
 #include <WiFiNINA.h>
 

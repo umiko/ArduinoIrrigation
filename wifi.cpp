@@ -1,3 +1,10 @@
+//AUTHOR:
+//umiko(https://github.com/umiko)
+//Permission to copy and modify is granted under the MIT license
+//
+//DESCRIPTION:
+//Definition of the WiFi-Wrapper
+
 #include "wifi.hpp"
 
 void wifi::establishConnection(const char ssid[], const char pass[], boolean retry)
