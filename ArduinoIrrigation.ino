@@ -18,10 +18,8 @@
 wifi wireless;
 WiFiClient client;
 
-
 DynamicJsonDocument doc(1024);
 
-//TODO: Add default constructors
 moistureMeter mm;
 pump p;
 moistureMeasurement measurement;
@@ -30,6 +28,8 @@ moistureMeasurement measurement;
 const float irrigation_threshold = 0.70;
 //the amount of water in liters that the pump will be toggled for
 const float irrigation_amount = 0.050;
+//the time in milliseconds between measurements
+const ulong irrigation_interval = 600000;
 
 void setup()
 {
@@ -50,10 +50,7 @@ void setup()
   //pump
   Serial.println("##### Pump #####");
   p = pump(1.2, _minute, 3, false);
-  p.printConfig();
-  //wificlient
-  
-  
+  p.printConfig();  
 }
 
 void loop()
@@ -84,10 +81,8 @@ void loop()
     Serial.println("Connection to Server failed...");
   }
 
-  //TODO: send measurements to the server
-
   // set measurement interval including measuring duration
-  delay(600000-(SAMPLE_SIZE*20));
+  delay(irrigation_interval-(SAMPLE_SIZE*20));
 }
 
 void post(){
