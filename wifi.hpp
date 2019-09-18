@@ -15,8 +15,9 @@ private:
   boolean checkModuleAvailability();
 
 public:
-  void establishConnection(const char ssid[], const char pass[], bool retry);
+  void establishConnection(const char ssid[], const char pass[], int retryLimit);
   void printConnectionProperties();
   WiFiClass getConnection();
   void setHostname(char hostname[]);
+  bool isConnected();
 };

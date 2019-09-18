@@ -7,7 +7,7 @@
 
 #include "wifi.hpp"
 
-void wifi::establishConnection(const char ssid[], const char pass[], boolean retry)
+void wifi::establishConnection(const char ssid[], const char pass[], int retryLimit)
 {
   if (!checkModuleAvailability())
   {
@@ -23,9 +23,17 @@ void wifi::establishConnection(const char ssid[], const char pass[], boolean ret
     Serial.println("Establishing connection...");
     connection.begin(ssid, pass);
     delay(10000);
-  } while (connection.status() != WL_CONNECTED && retry);
+    retryLimit--;
+  } while (connection.status() != WL_CONNECTED && retryLimit > 0);
 
-  Serial.println("Connection Established!");
+  if (!isConnected())
+  {
+    Serial.println("Wireless Connection failed.");
+  }
+  else
+  {
+    Serial.println("Wireless Connection Established!");
+  }
 };
 
 boolean wifi::checkModuleAvailability()
@@ -65,4 +73,9 @@ void wifi::printConnectionProperties()
     Serial.print(":");
     Serial.println(mac[0], HEX);
   }
+}
+
+bool wifi::isConnected()
+{
+  return connection.status() == WL_CONNECTED;
 }
