@@ -109,7 +109,7 @@ void upload()
     else
     {
       Serial.println("Wireless connection is established, retrying");
-      upload();
     }
+    upload();
   }
 }
